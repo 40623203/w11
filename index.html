@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<title>
+2017 Spring 機械設計工程系網際內容管理
+</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="stylesheet" href="data/reveal/reveal.css">
+    <link rel="stylesheet" href="data/reveal/black.css" id="theme">
+    
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="data/reveal/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'data/reveal/pdf.css' : 'data/reveal/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="data/reveal/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="reveal">
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section data-markdown>
+    <script type="text/template">
+## 2017Fall CADP 與 CP
+
+### 國立虎尾科技大學機械設計工程系一乙
+
+##計算機程式期中心得報告
+
+<small>
+Created by [蔡宜芳 40623203](http://kmolab.github.io/blog/)
+</small>
+
+[CPB 課程網誌](blog/index.html)
+
+
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W1
+
+* 機械設計就是一種表達
+
+* 六種表達方式 : 口語、文字、2D、 3D 、數學理論、實作表達
+
+* 三個創造力基本要素 : 自學力 ( 提升自我解題能力 )、執行力 ( 運用所學解決問題 )、想像力
+
+* 三個互動元件 : 固體、流體、軟體
+        
+* 當累積一定的經驗之後，透過創造力三要素整合運用，互動元件精巧組合,、互動運作，並用六種表達方式展現出你的設計。
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W2
+
+## 登入帳號, 修改密碼及更改時間顯示, 如何建立 wiki 和 fossil 指令以及用 ShareX 錄製影片
+
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# Fossil SCM 指令
+
+1. mkdir 資料夾名稱 : 建立資料夾
+
+2. cd 資料夾名稱 : 移動到指定資料夾
+
+3. cd .. : 移動到前一個目錄
+
+4. fossil clone 網址 : 克隆網誌到自己的資料夾
+
+5. fossil open 檔名 指定位置 : 打開資料夾內的資料
+
+6. fossil add . : 新增檔案
+
+7. fossil commit -m "名稱 " : 提交
+
+8. fossil push : 推送
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# ShareX 錄製影片
+
+1. 修改路徑 : Task settings > Screen recorder > Screen recording options... > FFmpeg path ( 路徑底色從紅色變綠色就對了 )
+
+2. 開啟錄音功能 : 在 FFmpeg path 的 Audio source : None 改成麥克風 ( Realtek High Definition Audio )
+
+3. 錄製影片 : Capture > Screen recording ( 全螢幕 ) 開始錄影 > Stop ( 停止錄影 )
+
+4. 影片儲存位置 : ShareX-portable > ShareX > Screenshots
+
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W3
+
+## 建立倉儲
+
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# 倉儲綁定帳號及 fossil open 開啟倉儲至工作目錄中
+
+* Y:\tmp\fossil>fossil clone https://40623203@cpb.kmol.info/40623203 40623203.fossil
+
+* password for 40623203 : * * *
+
+* Y:\tmp\fossil\wd\40623203>fossil open ./../../40623203.fossil
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# clone 4062 倉儲及 fossil open 開啟倉儲至工作目錄中
+
+* Y:\tmp\fossil>fossil clone https://cpb.kmol.info/4062 4062.fossil
+
+* Y:\tmp\fossil\wd\4062>fossil open ./../../4062.fossil
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W4
+
+## 利用 Leo Editor 改近端資料並推到遠端
+
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# Leo Editor
+
+* 利用 Leo Editor 改近端資料並推到遠端
+
+* 修改遠端的網址及 Author : yen 的 yen
+
+* 在 pelican-blog 上按右鍵 Goto Script 再點一下pelican-blog 就完成近端執行
+
+* 在 https-server 上按右鍵 Goto Script 就可以在 https://localhost:5443/#/ 看近端資料
+
+* 用 fossil ststus 檢查看看有沒有錯誤
+
+* 在 github-blog 上按右鍵 Goto Script 再點一下 github-blog 轉成遠端程式
+
+* 用 fossil add .所有資料再 fossil commit -m" " 推送資料, 就可以去遠端看資料
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W6
+
+## git clone Github 上的倉儲
+
+* Y:>cd tmp
+* Y:\tmp>mkdir github
+* Y:\tmp>cd github
+* Y:\tmp\github>git clone https://github.com/kmolab/rpcalc.git
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W7
+
+## Python3 變數命名規則及 for 迴圈用法
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# Python3 變數命名規則
+
+1. 變數必須以英文字母大寫或小寫或底線開頭
+
+2. 變數其餘字元可以是英文大小寫字母, 數字或底線
+
+3. 變數區分英文大小寫
+
+4. 變數不限字元長度
+
+5. 不可使用關鍵字當作變數名稱
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# for 迴圈用法
+
+```
+def dia(w):
+    
+    for i in range (1,w):
+        
+        print ((w-i)*" "+i*"*")
+        
+    for i in range (w):
+        
+        print (i*" "+(w-i)*"*")
+        
+dia(30)
+
+```
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# W8
+
+## 用 Eric6 IDE 建立所需要的 calculator 計算機程式對話表單
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# Eric6
+
+* 用 Eric6 IDE 建立 calculator 計算機程式對話表單點
+
+* 右鍵點 Compile all forms 建立新表單 Dialog
+
+* 儲存在 Y:\tmp\w8\ui
+
+* 檔案名稱: Dialog
+
+* eric6 會幫我們自動開啟 Qt Designer
+
+* 抓對應物件拉到視窗裡 ex: PushButton、Line Edit 等等
+
+* 可以從 Form-Preview 看，視窗不會照著你擺物件的大小縮放，所以要按右鍵 Lay out-Lay Out in a Grid 選擇擺放位置的方式
+    </script>
+</section>
+
+
+						
+<section>
+    <section data-markdown>
+        <script type="text/template">
+    # 課堂筆記
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/5fe2651a54d5cc1fe7cc2761223284815621409be110d118d7fac72a25c3da48?m=image/png><width="200"hight="200"></a>
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/0c566b037321394e512423730e1a75c93f0b41df095ca0939fe9e6a05960ddca?m=image/png><width="200"hight="200"></a>
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/098148ffe9a81b5c424b19369af5e721bf8ad97cf40cdd85ae9a2e00628ddf71?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/6ba5a8f6da9083b97bdfe32730ae74d53150fafa416c3c218e91ae27dc87a3e6?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/89f0e6103354f226d864327a79cdd839c9c54cd8008750f51d4f37b9d5fd1480?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/82735e5c0b6f49c54ef336bebfef018e1269e0ce2b76cd9feb9cbafe998c44d3?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/86bb670bc63edbf4f8ebb31a6837707a51f99c868353c7885741597dcb8d32ae?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/484049d94d5ea7fa10de296e39158a0d234efdb1f354c8d2b457dbf744df095e?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/61e3a3e153661e6cd60c7cf29bca8bb4e94ba50b03ac8dfe4d08137ef10d63e6?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+    <section data-markdown>
+        <script type="text/template">
+    <img src=https://cpb.kmol.info/40623203/raw/e3623c1ae50d6f8e73c5ef34c2b5e0f6bf461c659d2b9794f69b232a12cf8a65?m=image/jpeg><width="300"hight="200"></a>
+
+
+        </script>
+    </section>
+
+
+    						
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# 心得
+
+雖然前三週在上課的時候一直聽不懂老師在教什麼, 也不知道 fossil 要怎麼使用, 但是隨著老師和同學的教導, 慢慢地明白課程的內容, 在上課不懂的地方我都會回去用電腦重複看幾次老師拍的影片, 不懂就再問同學, 來來回回幾次, 我已經越來越熟悉並且漸漸地跟上老師的進度了, 在錯誤中學習經驗, 使我充滿自信也開始喜歡上這門課程了
+    </script>
+</section>
+
+
+						
+<section data-markdown>
+    <script type="text/template">
+# 自評成績
+
+* 每週出席情況 : 每次上課都準時出席 = 100
+* 紙本筆記 = 70
+* 隨身碟內容 = 85
+* 個人倉儲內容 : 整理一到六週的上課筆記 = 90
+* 各週上課摘要 : 在個人倉儲內 = 85
+* 自評分數 = 80
+
+    </script>
+</section>
+
+
+						
+</div>
+
+</div>
+
+<script src="data/reveal/head.min.js"></script>
+<script src="data/reveal/reveal.js"></script>
+<script>
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [
+                { src: 'data/reveal/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'data/reveal/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'data/reveal/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'data/reveal/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'data/reveal/zoom.js', async: true },
+                { src: 'data/reveal/notes.js', async: true },
+                { src: 'data/reveal/math.js', async: true }
+            ]
+        });
+</script>
+</body>
+</html>
+

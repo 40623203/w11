@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>2017 Fall CPB 第八週 - 2017Fall CADP&CP (虎尾科大MDE)</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+-->
+
+<!-- for LaTeX equations -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+
+<link rel="canonical" href="https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w8.html">
+
+        <meta name="author" content="40623203" />
+        <meta name="keywords" content="2017fall,CPB" />
+        <meta name="description" content="Python 物件導向的術語及基本用法, 利用瀏覽器中的 Brython 程式環境, 練習如何使用 for 迴圈、函式與類別定義, 利用 Eric6 IDE 建立所需要的 calculator 計算機程式對話表單, 看 CP Qt Designer 教學影片" />
+
+        <meta property="og:site_name" content="2017Fall CADP&CP (虎尾科大MDE)" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="2017 Fall CPB 第八週"/>
+        <meta property="og:url" content="https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w8.html"/>
+        <meta property="og:description" content="Python 物件導向的術語及基本用法, 利用瀏覽器中的 Brython 程式環境, 練習如何使用 for 迴圈、函式與類別定義, 利用 Eric6 IDE 建立所需要的 calculator 計算機程式對話表單, 看 CP Qt Designer 教學影片"/>
+        <meta property="article:published_time" content="2017-10-30" />
+            <meta property="article:section" content="Course" />
+            <meta property="article:tag" content="2017fall" />
+            <meta property="article:tag" content="CPB" />
+            <meta property="article:author" content="40623203" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/css/style.css" type="text/css"/>
+
+        <link href="https://cpb.kmol.info/40623203/doc/trunk/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="2017Fall CADP&CP (虎尾科大MDE) ATOM Feed"/>
+
+
+<script type="text/javascript" src="./../data/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushMakefile.min.js"></script>
+<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushMakefile.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "./../data/syntaxhighlighter/shCore.css";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "./../data/syntaxhighlighter/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+
+<!-- for table style start -->
+<style>
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+</style>
+<!-- for table style end -->
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/" class="navbar-brand">
+2017Fall CADP&CP (虎尾科大MDE)            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/category/course.html">Course</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="https://cpb.kmol.info/40623203/doc/trunk/blog/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="https://cpb.kmol.info/40623203/doc/trunk/blog/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w8.html"
+                       rel="bookmark"
+                       title="Permalink to 2017 Fall CPB 第八週">
+                        2017 Fall CPB 第八週
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-10-30T13:00:00+08:00"> 週一 30 十月 2017</time>
+    </span>
+            <span class="label label-default">By</span>
+            <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/author/40623203.html"><i class="fa fa-user"></i> 40623203</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://cpb.kmol.info/40623203/doc/trunk/blog/tag/2017fall.html">2017fall</a>
+        /
+	<a href="https://cpb.kmol.info/40623203/doc/trunk/blog/tag/cpb.html">CPB</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Python 物件導向的術語及基本用法, 利用瀏覽器中的 Brython 程式環境, 練習如何使用 for 迴圈、函式與類別定義, 利用 Eric6 IDE 建立所需要的 calculator 計算機程式對話表單, 看 CP Qt Designer 教學影片</p>
+
+
+<p>Python 物件導向的術語及基本用法:</p>
+<p>constructor function ( 建構函式 ), destructor function ( 解構函式 ), attributes and methods definition ( 屬性跟方法定義 ), odject ( 物件 ), syntax ( 語法 ), instant ( 案例 ), initialize ( 起始 ), self ( 貫串屬性跟方法的重點 )</p>
+<p>Class definition syntax:</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">subclass</span> <span class="p">(</span> <span class="err">物件名稱他把它叫做子物件</span> <span class="p">)</span> <span class="p">[(</span><span class="nx">superclass</span><span class="p">)</span> <span class="p">(</span> <span class="err">附物件</span> <span class="p">)]</span><span class="o">:</span>
+
+    <span class="p">[</span><span class="nx">attributes</span> <span class="nx">and</span> <span class="nx">methods</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Object instantiation syntax:</p>
+<div class="highlight"><pre><span></span>object = class() ( 要記得加小括號 )
+</pre></div>
+
+
+<p>Attributes and methods invoke:</p>
+<div class="highlight"><pre><span></span>object.attribute ( 物件 小點 加上對應屬性 )
+
+object.method() ( 物件 小點 直接呼叫方法的名稱 再加上小括號)
+</pre></div>
+
+
+<p><strong>name</strong> ( 兩個底線 name 加上兩個底線 ) 類別名稱 ( 特殊屬性 )</p>
+<p>到 https://mde1a1.kmol.info/2017fall/wiki?name=cpw7-w9 下載 python2_oop_intro.pdf 並閱讀, 了解內容之後到 eric6 做相關練習, 對這個程式的內容就能更加的了解</p>
+<p>利用瀏覽器中的 Brython 程式環境, 練習如何使用 for 迴圈、函式與類別定義:</p>
+<p>class w8():</p>
+<div class="highlight"><pre><span></span>def __init__(self, star):
+
+    self.star = star
+
+def diamond(self, w):
+
+    for i in range(1, w):
+
+        print((w-i)*&quot; &quot; + i*self.star)
+
+    for i in range(w):
+
+        print(i*&quot; &quot; + (w-i)*self.star)
+</pre></div>
+
+
+<p>w = w8("a")</p>
+<p>w.diamond(5)</p>
+<p>把 w = w8("a") 改成 ab 後要怎麼讓他對稱</p>
+<p>class w8():</p>
+<div class="highlight"><pre><span></span>def __init__(self, star):
+
+    self.star = star
+
+def diamond(self, w):
+
+    for i in range(1, w):
+
+        print((w-i)*&quot;  &quot; + i*self.star)
+
+    for i in range(w):
+
+        print(i*&quot;  &quot; + (w-i)*self.star)
+</pre></div>
+
+
+<p>w = w8("ab")</p>
+<p>w.diamond(5)</p>
+<p>利用 Eric6 IDE 建立所需要的 calculator 計算機程式對話表單:</p>
+<p>Sources 程式區, Forms 表單區</p>
+<ol>
+<li>
+<p>進入 eric6</p>
+</li>
+<li>
+<p>建立專案 Project-New</p>
+</li>
+<li>
+<p>打 Project Properties</p>
+</li>
+</ol>
+<p>( 1 ) Project Name: calculator</p>
+<p>( 2 ) Progr. Language: Python3</p>
+<p>( 3 ) Project Type: PyQt5 GUI</p>
+<p>( 4 ) Project Directory: Y:\tmp\w8</p>
+<p>( 5 ) Main Script: 寫完計算機程式後再寫</p>
+<p>( 6 ) 按 OK 執行</p>
+<ol>
+<li>點選表單區 ( Forms )</li>
+</ol>
+<p>( 1 ) 在介面中按右鍵點 Compile all forms 建立新表單 Dialog</p>
+<p>( 2 ) 儲存在 Y:\tmp\w8\ui </p>
+<p>( 3 ) 檔案名稱: Dialog</p>
+<p>( 4 ) eric6 會幫我們自動開啟 Qt Designer</p>
+<p>( 5 ) 抓對應物件拉到視窗裡 ex: PushButton、Line Edit 等等</p>
+<p>( 6 ) 從 Form-Preview 可以看, 但是視窗不會照著你擺物件的大小縮放</p>
+<p>( 7 ) 在視窗中, 按右鍵Lay out-Lay Out in a Grid 選擇擺放方式</p>
+<p>( 8 ) 依照自己的需求選擇</p>
+<ol>
+<li>
+<p>回到 eric6 的表單區編譯成 Form ( Compile form ) 編譯成 Python 程式</p>
+</li>
+<li>
+<p>到 Sources 點兩下就可以看到剛剛的程式</p>
+</li>
+<li>
+<p>到 Srart-Run Script 就可以看到拉出來的視窗</p>
+</li>
+<li>
+<p>也可以在 SciTE 中執行</p>
+</li>
+</ol>
+<p>CP Qt Designer 教學影片</p>
+<p>Qt Designer Manual: http://doc.qt.io/qt-5/qtdesigner-manual.html</p>
+<p>https://www.youtube.com/watch?v=Dmo8eZG5I2w</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'kmolabmde'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = '2017-fall-cpb-w8';
+                var disqus_url = 'https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w8.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/40623203-2017-fall-cpb-w9-exam.html">
+                            2017 Fall CPB 第九週考試 期中考心得影片及期中考投影片報告
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/40623203-2017-fall-cpb-w8-exam.html">
+                            2017 Fall CPB 第八週考試
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w8.html">
+                            2017 Fall CPB 第八週
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/40623203-2017-fall-cpb-w7-exam.html">
+                            2017 Fall CPB 第七週考試
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/2017-fall-cpb-w7.html">
+                            2017 Fall CPB 第七週
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="https://cpb.kmol.info/40623203/doc/trunk/blog/categories.html"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+                <ul class="list-group" id="categories">
+                    <li class="list-group-item">
+                        <a href="https://cpb.kmol.info/40623203/doc/trunk/blog/category/course.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Course
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="https://cpb.kmol.info/40623203/doc/trunk/blog/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/DandyDev/pelican-bootstrap3/" target="_blank">
+                pelican-bootstrap3
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/getpelican/pelican-plugins" target="_blank">
+                pelican-plugins
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/Tipue/Tipue-Search" target="_blank">
+                Tipue search
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 KMOL
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/js/bootstrap.min.js"></script>
+
+<!-- for https://github.com/jsor/lity lightbox video popup -->
+
+<link href="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/css/lity.css" rel="stylesheet">
+
+<script src="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/js/lity.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://cpb.kmol.info/40623203/doc/trunk/blog/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kmolabmde'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+
+</body>
+</html>
